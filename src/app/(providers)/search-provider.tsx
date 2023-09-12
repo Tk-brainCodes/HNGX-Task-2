@@ -1,11 +1,6 @@
-"use client"
+"use client";
 
-import React, {
-  useState,
-  useEffect,
-  createContext,
-  ReactNode,
-} from "react";
+import React, { useState, useEffect, createContext, ReactNode } from "react";
 import axios from "axios";
 
 interface SearchContextType {
@@ -23,12 +18,12 @@ export const SearchProvider = ({ children }: { children: ReactNode }) => {
   const [results, setResults] = useState<any[]>([]);
   const myKey = process.env.API_KEY;
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
 
     setQuery(e.target.value);
 
-    axios
+    await axios
       .get(
         `https://api.themoviedb.org/3/search/movie?api_key=${myKey}&language=en-US&page=1&include_adult=false&query=${e.target.value}`
       )
