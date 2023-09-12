@@ -8,7 +8,7 @@ import Herosection from "./(components)/Herosection";
 import Footer from "./(components)/Footer";
 
 export default function Home() {
-  const myKey = process.env.API_KEY;
+  const myKey = process.env.NEXT_PUBLIC_API_KEY;
   const movieRef = useRef(null);
 
   const popularMovies = useQuery({
