@@ -1,22 +1,45 @@
-import { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Logo, Hamburger, Search } from "../../../assests/icons";
+import { Link as LinkTo, animateScroll as scroll } from "react-scroll";
+import { SearchContext } from "../(providers)/search-provider";
 import Image from "next/image";
 
-type Props = {};
+type Props = {
+  movieRef: any;
+};
 
-function Header({}: Props) {
-  const [searchQuery, setSearchQuery] = useState("");
+function Header({ movieRef }: Props) {
+  // @ts-ignore
+  const { query, onChange } = useContext(SearchContext);
+  const [scrolling, setScrolling] = useState(false);
 
-  const handleInputChange = (e: any) => {
-    setSearchQuery(e.target.value);
+  const handleScroll = () => {
+    setScrolling(window.scrollY > 0);
   };
 
-  const handleSearch = () => {
-    console.log("Search query:", searchQuery);
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scrollToMovies = () => {
+    scroll.scrollTo(movieRef.current.offsetTop, {
+      duration: 800,
+      smooth: "easeInOutQuart",
+      offset: -50,
+    });
   };
 
   return (
-    <div className='w-[100vw] py-[1em] px-[4em] flex items-center justify-between h-auto z-10'>
+    <div
+      className={`w-[100vw] fixed  ${
+        scrolling
+          ? "firefox:bg-opacity-90 bg-opacity-30 backdrop-filter backdrop-blur-lg bg-[#121212]"
+          : ""
+      } py-[1em] px-[4em] flex items-center justify-between h-auto z-40`}
+    >
       <div className='w-[186px] h-[50px] justify-start items-center gap-6 inline-flex'>
         <Image
           src={Logo}
@@ -33,13 +56,14 @@ function Header({}: Props) {
         <div className='w-full h-9 px-2.5 py-1.5 rounded-md border border-gray-300 justify-between items-center gap-2.5 inline-flex'>
           <input
             type='text'
-            value={searchQuery}
-            onChange={handleInputChange}
+            value={query}
+            onChange={onChange}
             placeholder='What do you want to watch?'
             className='text-white text-base font-normal leading-normal bg-transparent border-none outline-none w-full'
+            onClick={scrollToMovies}
           />
           <button
-            onClick={handleSearch}
+            onClick={onChange}
             className='text-white bg-transparent border-none outline-none cursor-pointer'
           >
             <Image
@@ -54,7 +78,7 @@ function Header({}: Props) {
         <div className='text-white text-base font-bold leading-normal'>
           Sign in
         </div>
-        <div className='w-9 h-9 flex items-center justify-center bg-rose-700 rounded-full'>
+        <div className='w-9 h-9 cursor-pointer hover:bg-rose-600 flex items-center justify-center bg-rose-700 rounded-full'>
           <Image
             src={Hamburger}
             alt='hamburger icon'

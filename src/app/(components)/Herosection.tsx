@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import Image from "next/image";
 import Header from "./Header";
 import { Imdb, Tomatoe, Watch } from "../../../assests/icons";
@@ -18,7 +18,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
 
-const Herosection = ({ movie, loading }: { movie: any; loading: boolean }) => {
+const Herosection = ({ movie, loading, movieRef }: { movie: any; loading: boolean, movieRef: any }) => {
   const imagePath = "https://image.tmdb.org/t/p/original";
 
   const [currentSlide, setCurrentSlide] = useState<number>(0);
@@ -39,7 +39,7 @@ const Herosection = ({ movie, loading }: { movie: any; loading: boolean }) => {
         style={{ zIndex: 1 }}
       ></div>
 
-      <Header />
+      <Header movieRef={movieRef}/>
       <div className=' flex items-center  justify-between'>
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -50,17 +50,10 @@ const Herosection = ({ movie, loading }: { movie: any; loading: boolean }) => {
           className='w-auto'
         >
           {movie?.results.map((movie: any) => {
-            const numberToConvert = movie?.vote_average;
-            const maxValue = 100;
-
-            let percentage = numberToConvert * maxValue;
-            if (percentage > 100) {
-              percentage = 100;
-            }
             return (
               <SwiperSlide key={movie.id}>
                 <div
-                  className='w-fit px-[4em] h-auto mt-[6em] transition-all ease-in-out duration-300 whitespace-nowrap flex-col justify-start items-start gap-4 inline-flex'
+                  className='w-fit px-[4em] h-auto mt-[10em] mb-[2em] transition-all ease-in-out duration-300 whitespace-nowrap flex-col justify-start items-start gap-4 inline-flex'
                   style={{ zIndex: 2 }}
                 >
                   <div
@@ -79,7 +72,7 @@ const Herosection = ({ movie, loading }: { movie: any; loading: boolean }) => {
                         alt='bg-image'
                       />
                       <div className='text-white text-xs font-normal leading-3'>
-                        {percentage} / 100
+                        {movie?.vote_average.toFixed(1)} / 10
                       </div>
                     </div>
                     <div className='w-auto h-[17px] top-0 justify-start items-center gap-2.5 inline-flex'>
@@ -106,7 +99,7 @@ const Herosection = ({ movie, loading }: { movie: any; loading: boolean }) => {
                     {movie?.overview}
                   </div>
 
-                  <div className='px-4 py-1.5 bg-rose-700 rounded-md justify-start items-center gap-2 inline-flex'>
+                  <div className='px-4 py-1.5 bg-rose-700 cursor-pointer hover:bg-rose-600 rounded-md justify-start items-center gap-2 inline-flex'>
                     <Image
                       src={Watch}
                       width={50}

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import QueryProvider from "./(providers)/usequery-provider";
 import { NextProvider } from "./(providers)/nextui-provider";
+import { SearchProvider } from "./(providers)/search-provider";
 
 const dmSans = DM_Sans({
   weight: ["400", "700"],
@@ -24,7 +25,9 @@ export default function RootLayout({
     <html lang='en'>
       <body className={dmSans.className}>
         <QueryProvider>
-          <NextProvider>{children}</NextProvider>
+          <NextProvider>
+            <SearchProvider>{children}</SearchProvider>
+          </NextProvider>
         </QueryProvider>
       </body>
     </html>
