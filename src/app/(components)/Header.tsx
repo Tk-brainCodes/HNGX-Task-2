@@ -7,20 +7,16 @@ type Props = {};
 function Header({}: Props) {
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Handle input change
   const handleInputChange = (e: any) => {
     setSearchQuery(e.target.value);
   };
 
-  // Handle search submission (you can implement this as needed)
   const handleSearch = () => {
-    // Perform a search with the searchQuery
-    // You can add your logic here to handle the search action
     console.log("Search query:", searchQuery);
   };
 
   return (
-    <div className='w-full flex items-center justify-around h-20 absolute z-10'>
+    <div className='w-[100vw] py-[1em] px-[4em] flex items-center justify-between h-auto z-10'>
       <div className='w-[186px] h-[50px] justify-start items-center gap-6 inline-flex'>
         <Image
           src={Logo}

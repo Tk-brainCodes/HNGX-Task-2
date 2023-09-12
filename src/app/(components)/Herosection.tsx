@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useState } from "react"; // Import useState
+import React, { useState } from "react"; 
 import Image from "next/image";
 import Header from "./Header";
 import { Imdb, Tomatoe, Watch } from "../../../assests/icons";
@@ -21,21 +21,21 @@ import "swiper/css/autoplay";
 const Herosection = ({ movie, loading }: { movie: any; loading: boolean }) => {
   const imagePath = "https://image.tmdb.org/t/p/original";
 
-  const [currentSlide, setCurrentSlide] = useState<number>(0); 
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
 
   return (
     <div
-      className={`w-[100vw] overflow-x-hidden h-[600px] bg-cover bg-no-repeat relative`} 
+      className={`w-[100vw] flex flex-col overflow-x-hidden h-auto bg-cover bg-no-repeat relative`}
       style={{
         backgroundImage: `url(${
           imagePath + movie?.results[currentSlide]?.poster_path
-        })`, 
+        })`,
         backgroundSize: "cover",
-        backgroundRepeat: "no-repeat"
+        backgroundRepeat: "no-repeat",
       }}
     >
       <div
-        className='absolute h-fit top-0 left-0 w-full h-full bg-black opacity-50'
+        className='absolute  top-0 left-0 w-[100vw] h-full bg-black opacity-50'
         style={{ zIndex: 1 }}
       ></div>
 
@@ -47,20 +47,20 @@ const Herosection = ({ movie, loading }: { movie: any; loading: boolean }) => {
           autoplay={true}
           onSlideChange={(swiper) => setCurrentSlide(swiper.realIndex)}
           onSwiper={(swiper) => console.log(swiper)}
-          className="w-auto"
+          className='w-auto'
         >
           {movie?.results.map((movie: any) => {
             const numberToConvert = movie?.vote_average;
             const maxValue = 100;
 
-            const percentage = numberToConvert * maxValue;
-if (percentage > 100) {
-  percentage = 100;
-}
+            let percentage = numberToConvert * maxValue;
+            if (percentage > 100) {
+              percentage = 100;
+            }
             return (
               <SwiperSlide key={movie.id}>
                 <div
-                  className='w-fit h-auto mt-[10em] transition-all ease-in-out duration-300 whitespace-nowrap px-[5em]  flex-col justify-start items-start gap-4 inline-flex'
+                  className='w-fit px-[4em] h-auto mt-[6em] transition-all ease-in-out duration-300 whitespace-nowrap flex-col justify-start items-start gap-4 inline-flex'
                   style={{ zIndex: 2 }}
                 >
                   <div
@@ -97,7 +97,11 @@ if (percentage > 100) {
                   </div>
                   <div
                     className='w-[302px] text-white text-sm font-medium leading-[18px] overflow-hidden'
-                    style={{ width: "302px", height: "auto !important", whiteSpace: "break-spaces" }}
+                    style={{
+                      width: "302px",
+                      height: "auto !important",
+                      whiteSpace: "break-spaces",
+                    }}
                   >
                     {movie?.overview}
                   </div>
@@ -120,16 +124,26 @@ if (percentage > 100) {
           })}
         </Swiper>
 
-       <div className="w-9 h-[110px] relative z-10 mr-[3em]">
-  <div className="w-2.5 h-[110px] left-[26px] top-0 absolute flex-col justify-start items-center gap-2.5 inline-flex">
-    <div className="text-gray-400 text-xs font-bold leading-[14px]">1</div>
-    <div className="text-gray-400 text-xs font-bold leading-[14px]">2</div>
-    <div className="text-white text-base font-bold leading-[14px]">3</div>
-    <div className="text-gray-400 text-xs font-bold leading-[14px]">4</div>
-    <div className="text-gray-400 text-xs font-bold leading-[14px]">5</div>
-  </div>
-  <div className="w-5 h-[3px] left-0 top-[53px] absolute bg-white rounded-md" />
-</div>
+        <div className='w-9 h-[110px] relative z-10 mr-[4em]'>
+          <div className='w-2.5 h-[110px] left-[26px] top-0 absolute flex-col justify-start items-center gap-2.5 inline-flex'>
+            <div className='text-gray-400 text-xs font-bold leading-[14px]'>
+              1
+            </div>
+            <div className='text-gray-400 text-xs font-bold leading-[14px]'>
+              2
+            </div>
+            <div className='text-white text-base font-bold leading-[14px]'>
+              3
+            </div>
+            <div className='text-gray-400 text-xs font-bold leading-[14px]'>
+              4
+            </div>
+            <div className='text-gray-400 text-xs font-bold leading-[14px]'>
+              5
+            </div>
+          </div>
+          <div className='w-5 h-[3px] left-0 top-[53px] absolute bg-white rounded-md' />
+        </div>
       </div>
     </div>
   );

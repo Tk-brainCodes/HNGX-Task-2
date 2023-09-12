@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect } from "react";
-import Herosection from "./(components)/Herosection";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import MovieCard from "./(components)/MovieCard";
+import Herosection from "./(components)/Herosection";
 
 export default function Home() {
   const myKey = process.env.API_KEY;
@@ -52,6 +53,10 @@ export default function Home() {
       <Herosection
         movie={popularMovies.data}
         loading={popularMovies.isLoading}
+      />
+      <MovieCard
+        movie={trendingMovies.data}
+        loading={trendingMovies.isLoading}
       />
     </main>
   );
