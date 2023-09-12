@@ -113,7 +113,7 @@ function MovieCard({ movie, loading, movieRef }: Props) {
           className='text-black text-4xl font-bold'
           style={{ whiteSpace: "break-spaces" }}
         >
-          {query ? `Results for ${query}` : "Featured Movie"}
+          {query ? `Results for " ${query} "` : "Featured Movie"}
         </div>
         <div className='justify-start items-center w-auto cursor-pointer gap-2 flex flex-nowrap'>
           <div className='text-rose-700 hover:text-rose-600 text-lg font-normal leading-normal'>
