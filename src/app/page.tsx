@@ -8,14 +8,15 @@ import Herosection from "./(components)/Herosection";
 import Footer from "./(components)/Footer";
 
 export default function Home() {
-  const myKey = process.env.NEXT_PUBLIC_API_KEY;
   const movieRef = useRef(null);
 
   const popularMovies = useQuery({
     queryKey: ["popularMovies"],
     queryFn: () =>
       axios
-        .get(`https://api.themoviedb.org/3/movie/popular?api_key=${myKey}`)
+        .get(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
+        )
         .then((res) => res.data),
     refetchInterval: 1000,
   });
@@ -24,7 +25,9 @@ export default function Home() {
     queryKey: ["trendingMovies"],
     queryFn: () =>
       axios
-        .get(`https://api.themoviedb.org/3/trending/all/day?api_key=${myKey}`)
+        .get(
+          `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
+        )
         .then((res) => res.data),
     refetchInterval: 1000,
   });
