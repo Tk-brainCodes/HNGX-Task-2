@@ -36,22 +36,31 @@ function Header({ movieRef }: Props) {
     <div
       className={`w-[100vw] fixed  ${
         scrolling
-          ? "firefox:bg-opacity-90 bg-opacity-30 backdrop-filter backdrop-blur-lg bg-[#121212]"
+          ? "firefox:bg-opacity-90 transiton ease-out bg-opacity-30 backdrop-filter backdrop-blur-lg bg-[#121212]"
           : ""
       } py-[1em] px-[4em] flex items-center justify-between h-auto z-40`}
     >
-      <div className='w-[186px] h-[50px] justify-start items-center gap-6 inline-flex'>
-        <Image
-          src={Logo}
-          alt='logo'
-          width={50}
-          height={50}
-          className='w-[50px] h-[50px]'
-        />
-        <div className='text-white text-2xl font-bold leading-normal'>
-          MovieBox
+      <LinkTo
+        to='theatres'
+        offset={-110}
+        spy={true}
+        smooth={true}
+        duration={500}
+        activeClass='active'
+      >
+        <div className='w-[186px] h-[50px] justify-start items-center gap-6 inline-flex'>
+          <Image
+            src={Logo}
+            alt='logo'
+            width={50}
+            height={50}
+            className='w-[50px] h-[50px]'
+          />
+          <div className='text-white text-2xl font-bold leading-normal'>
+            MovieBox
+          </div>
         </div>
-      </div>
+      </LinkTo>
       <div className='w-[525px]'>
         <div className='w-full h-9 px-2.5 py-1.5 rounded-md border border-gray-300 justify-between items-center gap-2.5 inline-flex'>
           <input

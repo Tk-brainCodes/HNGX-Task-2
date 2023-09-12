@@ -1,9 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Header from "./Header";
 import { Imdb, Tomatoe, Watch } from "../../../assests/icons";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Element } from "react-scroll";
 import {
   Navigation,
   Pagination,
@@ -18,13 +19,30 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
 
-const Herosection = ({ movie, loading, movieRef }: { movie: any; loading: boolean, movieRef: any }) => {
+const Herosection = ({
+  movie,
+  loading,
+  movieRef,
+}: {
+  movie: any;
+  loading: boolean;
+  movieRef: any;
+}) => {
   const imagePath = "https://image.tmdb.org/t/p/original";
-
+  const swiperRef = useRef<typeof Swiper | null>(null);
   const [currentSlide, setCurrentSlide] = useState<number>(0);
 
+  const handleSlideChange = (index: number) => {
+    setCurrentSlide(index);
+    if (swiperRef.current) {
+      // @ts-ignore
+      swiperRef.current.slideTo(index);
+    }
+  };
+
   return (
-    <div
+    <Element
+      name='hero'
       className={`w-[100vw] flex flex-col overflow-x-hidden h-auto bg-cover bg-no-repeat relative`}
       style={{
         backgroundImage: `url(${
@@ -39,7 +57,7 @@ const Herosection = ({ movie, loading, movieRef }: { movie: any; loading: boolea
         style={{ zIndex: 1 }}
       ></div>
 
-      <Header movieRef={movieRef}/>
+      <Header movieRef={movieRef} />
       <div className=' flex items-center  justify-between'>
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -49,96 +67,105 @@ const Herosection = ({ movie, loading, movieRef }: { movie: any; loading: boolea
           onSwiper={(swiper) => console.log(swiper)}
           className='w-auto'
         >
-          {movie?.results.map((movie: any) => {
-            return (
-              <SwiperSlide key={movie.id}>
-                <div
-                  className='w-fit px-[4em] h-auto mt-[10em] mb-[2em] transition-all ease-in-out duration-300 whitespace-nowrap flex-col justify-start items-start gap-4 inline-flex'
-                  style={{ zIndex: 2 }}
-                >
+          {movie?.results
+            .map((movie: any) => {
+              return (
+                <SwiperSlide key={movie.id}>
                   <div
-                    className='w-[404px] h-auto text-white text-5xl font-bold leading-[56px]'
-                    style={{ width: "404px", whiteSpace: "break-spaces" }}
+                    className='w-fit px-[4em] h-auto mt-[10em] mb-[2em] transition-all ease-in-out duration-300 whitespace-nowrap flex-col justify-start items-start gap-4 inline-flex'
+                    style={{ zIndex: 2 }}
                   >
-                    {movie?.title}
-                  </div>
-                  <div className='relative flex gap-5'>
-                    <div className='w-auto h-[17px] top-0 justify-start items-center gap-2.5 inline-flex'>
-                      <Image
-                        className='w-[35px] h-[17px]'
-                        src={Imdb}
-                        width={500}
-                        height={500}
-                        alt='bg-image'
-                      />
-                      <div className='text-white text-xs font-normal leading-3'>
-                        {movie?.vote_average.toFixed(1)} / 10
+                    <div
+                      className='w-[404px] h-auto text-white text-5xl font-bold leading-[56px]'
+                      style={{ width: "404px", whiteSpace: "break-spaces" }}
+                      data-testid="movie-title"
+                    >
+                      {movie?.title}
+                    </div>
+                    <div className='relative flex gap-5'>
+                      <div className='w-auto h-[17px] top-0 justify-start items-center gap-2.5 inline-flex'>
+                        <Image
+                          className='w-[35px] h-[17px]'
+                          src={Imdb}
+                          width={500}
+                          height={500}
+                          alt='bg-image'
+                        />
+                        <div className='text-white text-xs font-normal leading-3'>
+                          {movie?.vote_average.toFixed(1)} / 10
+                        </div>
+                      </div>
+                      <div className='w-auto h-[17px] top-0 justify-start items-center gap-2.5 inline-flex'>
+                        <Image
+                          className='w-4 h-[17px]'
+                          src={Tomatoe}
+                          width={500}
+                          height={500}
+                          alt='bg-image'
+                        />
+                        <div className='text-white text-xs font-normal leading-3'>
+                          97%
+                        </div>
                       </div>
                     </div>
-                    <div className='w-auto h-[17px] top-0 justify-start items-center gap-2.5 inline-flex'>
-                      <Image
-                        className='w-4 h-[17px]'
-                        src={Tomatoe}
-                        width={500}
-                        height={500}
-                        alt='bg-image'
-                      />
-                      <div className='text-white text-xs font-normal leading-3'>
-                        97%
-                      </div>
+                    <div
+                      className='w-[302px] text-white text-sm font-medium leading-[18px] overflow-hidden'
+                      style={{
+                        width: "302px",
+                        height: "auto !important",
+                        whiteSpace: "break-spaces",
+                      }}
+                      data-testid="movie-overview"
+                    >
+                      {movie?.overview}
                     </div>
-                  </div>
-                  <div
-                    className='w-[302px] text-white text-sm font-medium leading-[18px] overflow-hidden'
-                    style={{
-                      width: "302px",
-                      height: "auto !important",
-                      whiteSpace: "break-spaces",
-                    }}
-                  >
-                    {movie?.overview}
-                  </div>
 
-                  <div className='px-4 py-1.5 bg-rose-700 cursor-pointer hover:bg-rose-600 rounded-md justify-start items-center gap-2 inline-flex'>
-                    <Image
-                      src={Watch}
-                      width={50}
-                      height={50}
-                      alt='watch icon'
-                      className='w-5 h-5 relative'
-                    />
-                    <div className='text-white text-sm font-bold uppercase leading-normal'>
-                      Watch trailer
+                    <div className='px-4 py-1.5 bg-rose-700 cursor-pointer hover:bg-rose-600 rounded-md justify-start items-center gap-2 inline-flex'>
+                      <Image
+                        src={Watch}
+                        width={50}
+                        height={50}
+                        alt='watch icon'
+                        className='w-5 h-5 relative'
+                      />
+                      <div className='text-white text-sm font-bold uppercase leading-normal'>
+                        Watch trailer
+                      </div>
                     </div>
                   </div>
-                </div>
-              </SwiperSlide>
-            );
-          })}
+                </SwiperSlide>
+              );
+            })
+            .slice(0, 10)}
         </Swiper>
 
-        <div className='w-9 h-[110px] relative z-10 mr-[4em]'>
-          <div className='w-2.5 h-[110px] left-[26px] top-0 absolute flex-col justify-start items-center gap-2.5 inline-flex'>
-            <div className='text-gray-400 text-xs font-bold leading-[14px]'>
-              1
-            </div>
-            <div className='text-gray-400 text-xs font-bold leading-[14px]'>
-              2
-            </div>
-            <div className='text-white text-base font-bold leading-[14px]'>
-              3
-            </div>
-            <div className='text-gray-400 text-xs font-bold leading-[14px]'>
-              4
-            </div>
-            <div className='text-gray-400 text-xs font-bold leading-[14px]'>
-              5
-            </div>
-          </div>
-          <div className='w-5 h-[3px] left-0 top-[53px] absolute bg-white rounded-md' />
+        {/*Carousel buttons*/}
+        <div className='w-autoh-auto block  z-10 mr-[4em]'>
+          {movie?.results
+            .map((_: any, index: number) => (
+              <>
+                <div className='w-2.5 h-auto  top-0 flex-col justify-start items-center gap-2.5 inline-flex'>
+                  <div
+                    key={index}
+                    className={`${
+                      currentSlide === index ? "text-white mr-[2em]" : "text-gray-400"
+                    } text-xs font-bold leading-[14px] cursor-pointer flex items-center justify-center gap-2`}
+                    onClick={() => handleSlideChange(index)}
+                  >
+                      {currentSlide === index ? (
+                  <div className='w-5 h-[3px]  top-[53px]  bg-white rounded-md' />
+                ) : (
+                  ""
+                )}
+                    {index + 1}
+                  </div>
+                </div>
+              </>
+            ))
+            .slice(0, 10)}
         </div>
       </div>
-    </div>
+    </Element>
   );
 };
 

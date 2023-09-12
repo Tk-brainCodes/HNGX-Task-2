@@ -35,7 +35,7 @@ const Card = ({
             width={500}
             height={500}
             placeholder='blur'
-            loading="lazy"
+            loading='lazy'
           />
         </div>
         <div className='w-[218px]  h-[29.21px] left-[16px] top-[15.58px] absolute justify-center items-center gap-[114px] inline-flex'>
@@ -93,7 +93,7 @@ const Card = ({
 function MovieCard({ movie, loading, movieRef }: Props) {
   const imagePath = "https://image.tmdb.org/t/p/original";
   // @ts-ignore
-  const { results } = useContext(SearchContext);
+  const { results, query } = useContext(SearchContext);
 
   function getGenreNames(genreIds: any, genresData: any) {
     const genreNames = genreIds.map((genreId: number) => {
@@ -113,7 +113,7 @@ function MovieCard({ movie, loading, movieRef }: Props) {
           className='text-black text-4xl font-bold'
           style={{ whiteSpace: "break-spaces" }}
         >
-          Featured Movie
+          {query ? `Results for ${query}` : "Featured Movie"}
         </div>
         <div className='justify-start items-center w-auto cursor-pointer gap-2 flex flex-nowrap'>
           <div className='text-rose-700 hover:text-rose-600 text-lg font-normal leading-normal'>
