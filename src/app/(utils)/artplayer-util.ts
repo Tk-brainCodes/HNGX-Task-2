@@ -21,12 +21,16 @@ export const initializeArtplayer = (
           style: {
             width: "78vw",
             height: "449px",
+            borderRadius: "20px",
+            backgroundImage: `url(${image})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
           },
         },
       ],
       moreVideoAttr: {
-        // crossOrigin: "anonymous",
-        preload: "none", 
+        crossOrigin: "anonymous",
+        preload: "none",
         playsInline: true,
       },
     };
@@ -48,5 +52,3 @@ export const hideArtplayer = () => {
     artplayerInstance.hide();
   }
 };
-
-

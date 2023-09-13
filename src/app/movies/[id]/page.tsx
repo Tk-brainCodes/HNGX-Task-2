@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import { useEffect } from "react";
@@ -5,6 +6,15 @@ import Sidenav from "@/app/(components)/Sidenav";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import TrailerCard from "@/app/(components)/TrailerCard";
+import Image from "next/image";
+import {
+  Dropdown,
+  Stars,
+  Option,
+  Tag,
+  OptionW,
+  ImageMovie,
+} from "../../../../assests/icons";
 
 type Props = {
   params: string;
@@ -53,8 +63,6 @@ export default function MovieDetails({ params }: Props) {
     }
   }, [movieVideo, details]);
 
-
-
   return (
     <div className='flex gap-5 max-md:flex-wrap'>
       <Sidenav id={id} />
@@ -64,6 +72,112 @@ export default function MovieDetails({ params }: Props) {
           movieVideo={movieVideo}
           isArtplayerVisible={true}
         />
+
+        <section className='grid grid-cols-fluid gap-2 overflow-y-hidden'>
+          <div className='w-[78vw] h-auto'>
+            <div className='flex items-center justify-between'>
+              <div className='flex gap-4'>
+                <div>
+                  <span className='text-neutral-700 text-[23px] font-medium'>
+                    {details?.data?.original_title}
+                  </span>
+                  <span className='text-neutral-700 text-[23px] font-normal'>
+                    •
+                  </span>
+                  <span className='text-neutral-700 text-[23px] font-medium'>
+                    {details?.data?.release_date?.substring(0, 4)}
+                  </span>
+                  <span className='text-neutral-700 text-[23px] font-normal'>
+                    •
+                  </span>
+                  <span className='text-neutral-700 text-[23px] font-medium'>
+                    {details?.data?.adult === false ? "PG-13" : "18+"}
+                  </span>
+                  <span className='text-neutral-700 text-[23px] font-bold'>
+                    •
+                  </span>
+                  <span className='text-neutral-700 text-[23px] font-medium'>
+                    {details?.data?.runtime}
+                  </span>
+                </div>
+
+                {details?.data?.genres?.map((genre: any) => (
+                  <div
+                    key={genre.id}
+                    className='rounded-[15px] flex items-center justify-center h-[30px] w-[84px] border border-pink-100 top-[6px] text-red-700 text-[15px] font-medium '
+                  >
+                    {genre.name}
+                  </div>
+                ))}
+              </div>
+
+              <div className='flex gap-3 items-center justify-center'>
+                <span className='flex gap-2 text-gray-200 text-[25px] font-medium'>
+                  <Image
+                    src={Stars}
+                    alt='starts'
+                    className='w-[30px] h-[30px]'
+                  />
+                  {details?.data?.vote_average.toFixed(1)}
+                </span>
+                <span className='text-stone-500 text-xl font-medium'>
+                  | 350k
+                </span>
+              </div>
+            </div>
+
+            <div className='top-[60px] w-[774px] text-zinc-800 text-xl font-normal'>
+              {details?.data?.overview}
+            </div>
+
+            {/*directors*/}
+            <div className='w-auto h-auto mt-[1em] grid gap-8'>
+              <div className='flex gap-3'>
+                <span className='text-zinc-800 text-xl font-normal'>
+                  Director :
+                </span>
+                <span className='text-rose-700 text-xl font-normal'>
+                  Joseph Kosinski
+                </span>
+              </div>
+              <div className='flex gap-3'>
+                <span className='text-zinc-800 text-xl font-normal'>
+                  Writers :
+                </span>
+                <span className='text-rose-700 text-xl font-normal'>
+                  Jim Cash, Jack Epps Jr, Peter Craig
+                </span>
+              </div>
+              <div className='flex gap-3'>
+                <span className='text-zinc-800 text-xl font-normal'>
+                  Stars :
+                </span>
+                <span className='text-rose-700 text-xl font-normal'>
+                  Tom Cruise, Jennifer Connelly, Miles Teller
+                </span>
+              </div>
+            </div>
+
+            {/*buttons*/}
+            <div className='w-auto h-[55px] mt-[2em] cursor-pointer relative'>
+              <div className='w-[785px] h-[55px] left-0 top-0 absolute bg-white bg-opacity-80 rounded-[10px] border border-stone-300' />
+              <div className='w-[253px] h-[55px] left-0 top-0 absolute bg-rose-700 rounded-[10px]' />
+              <div className='left-[20px] top-[13px] absolute text-white text-xl font-medium '>
+                Top rated movie #65
+              </div>
+              <div className='left-[277px] top-[13px] absolute text-zinc-800 text-xl font-medium '>
+                Awards 9 nominations
+              </div>
+              <Image
+                className='w-[30px] h-[30px] left-[729px] top-[13px] absolute'
+                alt='dropdown'
+                src={Dropdown}
+              />
+            </div>
+          </div>
+
+          <div></div>
+        </section>
       </main>
     </div>
   );
