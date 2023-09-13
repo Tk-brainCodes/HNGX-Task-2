@@ -126,7 +126,7 @@ export default function MovieDetails({ params }: Props) {
               </div>
             </div>
 
-            <div className='top-[60px] w-[774px] text-zinc-800 text-xl font-normal'>
+            <div className='top-[60px] mt-[3em] w-[774px] text-zinc-800 text-xl font-normal'>
               {details?.data?.overview}
             </div>
 
