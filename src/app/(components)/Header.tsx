@@ -41,7 +41,7 @@ function Header({ movieRef }: Props) {
       } py-[1em] px-[4em] flex items-center justify-between h-auto z-40`}
     >
       <LinkTo
-        to='theatres'
+        to='hero'
         offset={-110}
         spy={true}
         smooth={true}
