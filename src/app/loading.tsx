@@ -4,7 +4,7 @@ type Props = {};
 
 function loading({}: Props) {
   return (
-    <div className='w-[100vw] h-[100vw] flex  items-center justify-center bg-rose-700 text-white'>
+    <div className='w-full h-full flex  items-center justify-center bg-rose-700 text-white'>
       <div
         aria-label='Loading...'
         role='status'
@@ -87,7 +87,7 @@ function loading({}: Props) {
             stroke-width='24'
           ></line>
         </svg>
-        <span className='text-2xl font-medium text-white'>
+        <span className='text-4xl font-semibold text-white'>
           Loading Movie...
         </span>
       </div>
