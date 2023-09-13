@@ -4,14 +4,14 @@ type Props = {};
 
 function loading({}: Props) {
   return (
-    <div className='w-full h-full flex  items-center justify-center bg-rose-700 text-white'>
+    <div className='w-[100vw] transition ease-in-out h-[100vh] flex  items-center justify-center bg-rose-700 text-white'>
       <div
         aria-label='Loading...'
         role='status'
         className='flex items-center space-x-2'
       >
         <svg
-          className='h-6 w-6 animate-spin stroke-gray-500'
+          className='h-[50px] w-[50px]  animate-spin stroke-white'
           viewBox='0 0 256 256'
         >
           <line
@@ -87,7 +87,7 @@ function loading({}: Props) {
             stroke-width='24'
           ></line>
         </svg>
-        <span className='text-4xl font-semibold text-white'>
+        <span className='text-3xl font-semibold text-white'>
           Loading Movie...
         </span>
       </div>
