@@ -6,38 +6,44 @@ import Image from "next/image";
 import { Imdb, Tomatoe, Like, Next } from "../../../assests/icons";
 import { tvGenres, movieGenres } from "../../../data/genre";
 import LoadingSpiner from "./Loading";
+import Link from "next/link";
 
 type Props = {
   movie: any;
   loading: boolean;
   movieRef: any;
+  id: number;
 };
 
 const Card = ({
   movie,
   imagePath,
   getGenreNames,
+  id,
 }: {
   movie: any;
   imagePath: string;
   getGenreNames: any;
+  id: number;
 }) => {
   return (
     <>
       <div className='w-[250px] h-[370px] relative'>
-        <div className='w-[250px] h-[370px] left-0 top-0 absolute'>
-          <div className='w-[250px] h-[370px] left-0 top-0 absolute bg-stone-300' />
-          <Image
-            className='w-[250px] h-[370px] bg-gray-600 transition ease-in-out hover:brightness-50 left-0 top-0 absolute'
-            src={imagePath + movie?.poster_path}
-            alt={movie?.title || "title"}
-            blurDataURL={imagePath + movie?.poster_path}
-            width={500}
-            height={500}
-            placeholder='blur'
-            loading='lazy'
-          />
-        </div>
+        <Link href={`movies/${id}`}>
+          <div className='w-[250px] h-[370px] left-0 top-0 absolute'>
+            <div className='w-[250px] h-[370px] left-0 top-0 absolute bg-stone-300' />
+            <Image
+              className='w-[250px] h-[370px] bg-gray-600 transition ease-in-out hover:brightness-50 left-0 top-0 absolute'
+              src={imagePath + movie?.poster_path}
+              alt={movie?.title || "title"}
+              blurDataURL={imagePath + movie?.poster_path}
+              width={500}
+              height={500}
+              placeholder='blur'
+              loading='lazy'
+            />
+          </div>
+        </Link>
         <div className='w-[218px]  h-[29.21px] left-[16px] top-[15.58px] absolute justify-center items-center gap-[114px] inline-flex'>
           <div className='self-stretch z-10 px-2 py-[3px] bg-gray-100 bg-opacity-50 rounded-full backdrop-blur-[2px] justify-center items-center gap-2.5 flex'>
             <div className='text-gray-900 text-xs font-bold'>
@@ -128,16 +134,23 @@ function MovieCard({ movie, loading, movieRef }: Props) {
         <div className='w-[100vw] px-[4em] py-[2em] h-auto grid grid-cols-fluid gap-12 mb-[1em] '>
           {results.length > 0
             ? results.map((movie: any) => (
-                <div
-                  key={movie.id}
-                  className='flex-col cursor-pointer  justify-start items-start gap-3 mb-[2em] inline-flex flex-wrap'
-                >
-                  <Card
-                    movie={movie}
-                    imagePath={imagePath}
-                    getGenreNames={getGenreNames}
-                  />
-                </div>
+                <>
+                  {results.length < 0 ? (
+                    <LoadingSpiner text='Movies' />
+                  ) : (
+                    <div
+                      key={movie.id}
+                      className='flex-col cursor-pointer  justify-start items-start gap-3 mb-[2em] inline-flex flex-wrap'
+                    >
+                      <Card
+                        movie={movie}
+                        imagePath={imagePath}
+                        getGenreNames={getGenreNames}
+                        id={movie?.id}
+                      />
+                    </div>
+                  )}
+                </>
               ))
             : movie?.results.slice(0, 10).map((movie: any) => (
                 <div
@@ -148,6 +161,7 @@ function MovieCard({ movie, loading, movieRef }: Props) {
                     movie={movie}
                     imagePath={imagePath}
                     getGenreNames={getGenreNames}
+                    id={movie?.id}
                   />
                 </div>
               ))}

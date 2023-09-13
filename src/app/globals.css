@@ -2,10 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @layer utilities {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    scroll-behavior: smooth;
+
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #973333;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    scroll-behavior: smooth;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #973333;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    scroll-behavior: smooth;
+
+  }
+} */
+
 html {
   overflow-x: hidden;
+  scroll-behavior: smooth;
+
 }
 
 body {
   overflow-x: hidden;
+  scroll-behavior: smooth;
+
 }
