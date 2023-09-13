@@ -162,7 +162,7 @@ export default function MovieDetails({ params }: Props) {
             </div>
 
             {/*buttons*/}
-            <div className='w-auto h-[55px] mt-[2em] cursor-pointer relative'>
+            <div className='w-auto h-[55px] mb-[2em] mt-[2em] cursor-pointer relative'>
               <div className='w-[785px] h-[55px] left-0 top-0 absolute bg-white bg-opacity-80 rounded-[10px] border border-stone-300' />
               <div className='w-[253px] h-[55px] left-0 top-0 absolute bg-rose-700 rounded-[10px]' />
               <div className='left-[20px] top-[13px] absolute text-white text-xl font-medium '>
