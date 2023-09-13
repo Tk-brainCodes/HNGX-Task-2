@@ -77,14 +77,17 @@ export default function MovieDetails({ params }: Props) {
           <div className='w-[78vw] h-auto'>
             <div className='flex items-center justify-between'>
               <div className='flex gap-4'>
-                <div>
-                  <span className='text-neutral-700 text-[23px] font-medium'>
+                <div className='flex gap-4'>
+                  <span
+                    data-testid="movie-title"
+                    className='text-neutral-700 text-[23px] font-medium'
+                  >
                     {details?.data?.original_title}
                   </span>
                   <span className='text-neutral-700 text-[23px] font-normal'>
                     •
                   </span>
-                  <span className='text-neutral-700 text-[23px] font-medium'>
+                  <span  data-testid="movie-release-date" className='text-neutral-700 text-[23px] font-medium'>
                     {details?.data?.release_date?.substring(0, 4)}
                   </span>
                   <span className='text-neutral-700 text-[23px] font-normal'>
@@ -96,7 +99,7 @@ export default function MovieDetails({ params }: Props) {
                   <span className='text-neutral-700 text-[23px] font-bold'>
                     •
                   </span>
-                  <span className='text-neutral-700 text-[23px] font-medium'>
+                  <span data-testid="movie-runtime" className='text-neutral-700 text-[23px] font-medium'>
                     {details?.data?.runtime}
                   </span>
                 </div>
@@ -126,7 +129,7 @@ export default function MovieDetails({ params }: Props) {
               </div>
             </div>
 
-            <div className='top-[60px] mt-[3em] w-[774px] text-zinc-800 text-xl font-normal'>
+            <div data-testid="movie-overview" className='top-[60px] mt-[2em] w-[774px] text-zinc-800 text-xl font-normal'>
               {details?.data?.overview}
             </div>
 
