@@ -4,12 +4,13 @@ import { useEffect } from "react";
 import Sidenav from "@/app/(components)/Sidenav";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import TrailerCard from "@/app/(components)/TrailerCard";
 
 type Props = {
   params: string;
 };
 
-export default function MovieDetails({ params }: { params: string }) {
+export default function MovieDetails({ params }: Props) {
   const { id }: any = params;
   let movieId = id === "%5Bmovies%5D" ? 447277 : id;
 
@@ -38,17 +39,32 @@ export default function MovieDetails({ params }: { params: string }) {
   });
 
   useEffect(() => {
-    if (!movieVideo.isFetching && movieVideo.isSuccess) {
+    function canCacheData(fetchStatus: any) {
+      return !fetchStatus.isFetching && fetchStatus.isSuccess;
+    }
+
+    if (canCacheData(movieVideo) && canCacheData(details)) {
       typeof window !== "undefined"
         ? localStorage.setItem("video", JSON.stringify(movieVideo.data))
         : "";
+      typeof window !== "undefined"
+        ? localStorage.setItem("details", JSON.stringify(details.data))
+        : "";
     }
-  });
+  }, []);
+
+
 
   return (
-    <div className='grid grid-cols-2 gap-10'>
+    <div className='flex gap-5 max-md:flex-wrap'>
       <Sidenav id={id} />
-      <main></main>
+      <main>
+        <TrailerCard
+          image={imagePath + details?.data?.poster_path}
+          movieVideo={movieVideo}
+          isArtplayerVisible={true}
+        />
+      </main>
     </div>
   );
 }

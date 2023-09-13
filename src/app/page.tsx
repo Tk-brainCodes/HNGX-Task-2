@@ -15,7 +15,7 @@ export default function Home() {
     queryFn: () =>
       axios
         .get(
-          `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
+          `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
         )
         .then((res) => res.data),
     refetchInterval: 1000,
@@ -56,13 +56,13 @@ export default function Home() {
   return (
     <main className=''>
       <Herosection
-        movie={popularMovies.data}
-        loading={popularMovies.isLoading}
+        movie={trendingMovies.data}
+        loading={trendingMovies.isLoading}
         movieRef={movieRef}
       />
       <MovieCard
-        movie={trendingMovies.data}
-        loading={trendingMovies.isLoading}
+        movie={popularMovies.data}
+        loading={popularMovies.isLoading}
         movieRef={movieRef}
       />
       <Footer />

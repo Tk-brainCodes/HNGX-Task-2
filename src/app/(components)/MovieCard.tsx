@@ -46,7 +46,7 @@ const Card = ({
         <div className='w-[218px]  h-[29.21px] left-[16px] top-[15.58px] absolute justify-center items-center gap-[114px] inline-flex'>
           <div className='self-stretch z-10 px-2 py-[3px] bg-gray-100 bg-opacity-50 rounded-full backdrop-blur-[2px] justify-center items-center gap-2.5 flex'>
             <div className='text-gray-900 text-xs font-bold'>
-              {movie?.media_type ? movie?.media_type?.toUpperCase() : ""}
+              {movie?.media_type ? movie?.media_type?.toUpperCase() : "MOVIE"}
             </div>
           </div>
           <div className='w-[30px] z-10 h-[29.21px] relative'>

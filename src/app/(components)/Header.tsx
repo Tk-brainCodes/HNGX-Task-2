@@ -48,7 +48,7 @@ function Header({ movieRef }: Props) {
         duration={500}
         activeClass='active'
       >
-        <div className='w-[186px] h-[50px] justify-start items-center gap-6 inline-flex'>
+        <div className='w-[186px] cursor-pointer h-[50px] justify-start items-center gap-6 inline-flex'>
           <Image
             src={Logo}
             alt='logo'
