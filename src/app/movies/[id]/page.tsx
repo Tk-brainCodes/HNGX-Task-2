@@ -100,7 +100,7 @@ export default function MovieDetails({ params }: Props) {
                     •
                   </span>
                   <span data-testid="movie-runtime" className='text-neutral-700 text-[23px] font-medium'>
-                    {details?.data?.runtime}
+                    {details?.data?.runtime} m
                   </span>
                 </div>
 
