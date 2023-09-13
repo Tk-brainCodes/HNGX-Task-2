@@ -51,7 +51,7 @@ export default function MovieDetails({ params }: Props) {
         ? localStorage.setItem("details", JSON.stringify(details.data))
         : "";
     }
-  }, []);
+  }, [movieVideo, details]);
 
 
 

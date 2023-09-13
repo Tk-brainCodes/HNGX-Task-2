@@ -16,7 +16,7 @@ export const initializeArtplayer = (
       layers: [
         {
           name: "potser",
-          html: `<img style="width: 100px" src="${image}">`,
+          html: `<img style="width: fit" src="${image}">`,
           tooltip: "Potser Tip",
           style: {
             width: "78vw",
@@ -48,3 +48,5 @@ export const hideArtplayer = () => {
     artplayerInstance.hide();
   }
 };
+
+

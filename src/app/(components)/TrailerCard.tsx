@@ -1,6 +1,7 @@
 import { useRef, useEffect } from "react";
 import { initializeArtplayer } from "../(utils)/artplayer-util";
 
+
 type Props = {
   movieVideo: any;
   isArtplayerVisible: boolean;
@@ -15,7 +16,7 @@ function TrailerCard({ movieVideo, isArtplayerVisible, image }: Props) {
       const videoKey = movieVideo.data.results[0]?.key;
       initializeArtplayer(artRef.current, videoKey, image);
     }
-  }, []);
+  }, [image, movieVideo?.data?.results]);
 
   useEffect(() => {
     if (artRef.current) {
@@ -27,7 +28,7 @@ function TrailerCard({ movieVideo, isArtplayerVisible, image }: Props) {
     <div>
       <div
         ref={artRef}
-        className='w-[78vw] h-[449px] mt-[2em] rounded-[20px]'
+        className='w-[75vw] h-[449px]'
       ></div>
     </div>
   );
