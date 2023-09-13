@@ -77,17 +77,20 @@ export default function MovieDetails({ params }: Props) {
           <div className='w-[78vw] h-auto'>
             <div className='flex items-center justify-between'>
               <div className='flex gap-4'>
-                <div className='flex gap-4'>
+                <div className='flex gap-4 flex-wrap'>
                   <span
-                    data-testid="movie-title"
+                    data-testid='movie-title'
                     className='text-neutral-700 text-[23px] font-medium'
                   >
-                    {details?.data?.original_title}
+                    {details?.data?.title}
                   </span>
                   <span className='text-neutral-700 text-[23px] font-normal'>
                     •
                   </span>
-                  <span  data-testid="movie-release-date" className='text-neutral-700 text-[23px] font-medium'>
+                  <span
+                    data-testid='movie-release-date'
+                    className='text-neutral-700 text-[23px] font-medium'
+                  >
                     {details?.data?.release_date?.substring(0, 4)}
                   </span>
                   <span className='text-neutral-700 text-[23px] font-normal'>
@@ -99,22 +102,27 @@ export default function MovieDetails({ params }: Props) {
                   <span className='text-neutral-700 text-[23px] font-bold'>
                     •
                   </span>
-                  <span data-testid="movie-runtime" className='text-neutral-700 text-[23px] font-medium'>
+                  <span
+                    data-testid='movie-runtime'
+                    className='text-neutral-700 text-[23px] font-medium'
+                  >
                     {details?.data?.runtime} m
                   </span>
                 </div>
 
-                {details?.data?.genres?.map((genre: any) => (
-                  <div
-                    key={genre.id}
-                    className='rounded-[15px] flex items-center justify-center h-[30px] w-[84px] border border-pink-100 top-[6px] text-red-700 text-[15px] font-medium '
-                  >
-                    {genre.name}
-                  </div>
-                ))}
+                <div className='flex flex-wrap'>
+                  {details?.data?.genres?.map((genre: any) => (
+                    <div
+                      key={genre.id}
+                      className='rounded-[15px] flex items-center justify-center h-[30px] w-[84px] border border-pink-100 top-[6px] text-red-700 text-[15px] font-medium '
+                    >
+                      {genre.name}
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <div className='flex gap-3 items-center justify-center'>
+              <div className='flex flex-nowrap gap-3 items-center justify-center'>
                 <span className='flex gap-2 text-gray-200 text-[25px] font-medium'>
                   <Image
                     src={Stars}
@@ -129,7 +137,10 @@ export default function MovieDetails({ params }: Props) {
               </div>
             </div>
 
-            <div data-testid="movie-overview" className='top-[60px] mt-[2em] w-[774px] text-zinc-800 text-xl font-normal'>
+            <div
+              data-testid='movie-overview'
+              className='top-[60px] mt-[2em] w-[774px] text-zinc-800 text-xl font-normal'
+            >
               {details?.data?.overview}
             </div>
 

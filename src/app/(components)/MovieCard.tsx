@@ -27,7 +27,7 @@ const Card = ({
 }) => {
   return (
     <>
-      <div className='w-[250px] h-[370px] relative'>
+      <div className='w-[250px] max-md:w-[300px] max-sm:w-[300px] h-[370px] relative'>
         <Link href={`movies/${id}`}>
           <div className='w-[250px] h-[370px] left-0 top-0 absolute'>
             <div className='w-[250px] h-[370px] left-0 top-0 absolute bg-stone-300' />

@@ -56,7 +56,7 @@ function Header({ movieRef }: Props) {
             height={50}
             className='w-[50px] h-[50px]'
           />
-          <div className='text-white text-2xl font-bold leading-normal'>
+          <div className='text-white max-md:hidden max-sm: hidden text-2xl font-bold leading-normal'>
             MovieBox
           </div>
         </div>
@@ -84,7 +84,7 @@ function Header({ movieRef }: Props) {
         </div>
       </div>
       <div className=' flex h-9 justify-between items-center gap-[27px]'>
-        <div className='text-white text-base font-bold leading-normal'>
+        <div className='text-white max-sm:hidden max-md:hidden text-base font-bold leading-normal'>
           Sign in
         </div>
         <div className='w-9 h-9 cursor-pointer hover:bg-rose-600 flex items-center justify-center bg-rose-700 rounded-full'>

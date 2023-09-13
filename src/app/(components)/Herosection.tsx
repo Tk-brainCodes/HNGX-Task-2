@@ -18,6 +18,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
+import Link from "next/link";
 
 const Herosection = ({
   movie,
@@ -78,7 +79,7 @@ const Herosection = ({
                     <div
                       className='w-[404px] h-auto text-white text-5xl font-bold leading-[56px]'
                       style={{ width: "404px", whiteSpace: "break-spaces" }}
-                      data-testid="movie-title"
+                      data-testid='movie-title'
                     >
                       {movie?.title}
                     </div>
@@ -115,23 +116,25 @@ const Herosection = ({
                         height: "auto !important",
                         whiteSpace: "break-spaces",
                       }}
-                      data-testid="movie-overview"
+                      data-testid='movie-overview'
                     >
                       {movie?.overview}
                     </div>
 
-                    <div className='px-4 py-1.5 bg-rose-700 cursor-pointer hover:bg-rose-600 rounded-md justify-start items-center gap-2 inline-flex'>
-                      <Image
-                        src={Watch}
-                        width={50}
-                        height={50}
-                        alt='watch icon'
-                        className='w-5 h-5 relative'
-                      />
-                      <div className='text-white text-sm font-bold uppercase leading-normal'>
-                        Watch trailer
+                    <Link href={`/`}>
+                      <div className='px-4 py-1.5 bg-rose-700 cursor-pointer hover:bg-rose-600 rounded-md justify-start items-center gap-2 inline-flex'>
+                        <Image
+                          src={Watch}
+                          width={50}
+                          height={50}
+                          alt='watch icon'
+                          className='w-5 h-5 relative'
+                        />
+                        <div className='text-white text-sm font-bold uppercase leading-normal'>
+                          Watch trailer
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                   </div>
                 </SwiperSlide>
               );
@@ -148,15 +151,17 @@ const Herosection = ({
                   <div
                     key={index}
                     className={`${
-                      currentSlide === index ? "text-white mr-[2em]" : "text-gray-400"
+                      currentSlide === index
+                        ? "text-white mr-[2em]"
+                        : "text-gray-400"
                     } text-xs font-bold leading-[14px] cursor-pointer flex items-center justify-center gap-2`}
                     onClick={() => handleSlideChange(index)}
                   >
-                      {currentSlide === index ? (
-                  <div className='w-5 h-[3px]  top-[53px]  bg-white rounded-md' />
-                ) : (
-                  ""
-                )}
+                    {currentSlide === index ? (
+                      <div className='w-5 h-[3px]  top-[53px]  bg-white rounded-md' />
+                    ) : (
+                      ""
+                    )}
                     {index + 1}
                   </div>
                 </div>
