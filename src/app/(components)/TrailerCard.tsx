@@ -28,7 +28,7 @@ function TrailerCard({ movieVideo, isArtplayerVisible, image }: Props) {
     <div>
       <div
         ref={artRef}
-        className='w-[75vw] h-[449px]'
+        className='w-[78vw] h-[449px] mt-[3em]'
       ></div>
     </div>
   );

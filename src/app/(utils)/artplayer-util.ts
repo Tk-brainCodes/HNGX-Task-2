@@ -25,8 +25,8 @@ export const initializeArtplayer = (
         },
       ],
       moreVideoAttr: {
-        crossOrigin: "anonymous",
-        preload: "none", // metadata
+        // crossOrigin: "anonymous",
+        preload: "none", 
         playsInline: true,
       },
     };
