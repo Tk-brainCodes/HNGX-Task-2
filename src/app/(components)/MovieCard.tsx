@@ -12,7 +12,6 @@ type Props = {
   movie: any;
   loading: boolean;
   movieRef: any;
-  id: number;
 };
 
 const Card = ({
