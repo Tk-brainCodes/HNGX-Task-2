@@ -28,11 +28,6 @@ export const initializeArtplayer = (
           },
         },
       ],
-      moreVideoAttr: {
-        crossOrigin: "anonymous",
-        preload: "none",
-        playsInline: true,
-      },
     };
     option.volume = 0.5;
     artplayerInstance = new Artplayer(option);

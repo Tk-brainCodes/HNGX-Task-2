@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { SearchContext } from "../(providers)/search-provider";
 import Image from "next/image";
 import { Imdb, Tomatoe, Like, Next } from "../../../assests/icons";
@@ -25,6 +25,12 @@ const Card = ({
   getGenreNames: any;
   id: number;
 }) => {
+  const [liked, setLiked] = useState(false);
+
+  const handleLikeClick = () => {
+    setLiked(!liked);
+  };
+
   return (
     <>
       <div className='w-[250px] max-md:w-[300px] max-sm:w-[300px] h-[370px] relative'>
@@ -50,7 +56,12 @@ const Card = ({
             </div>
           </div>
           <div className='w-[30px] z-10 h-[29.21px] relative'>
-            <div className='w-[30px] h-[29.21px] left-0 top-0 absolute bg-gray-100 bg-opacity-50 rounded-full backdrop-blur-[2px]' />
+            <div
+              onClick={handleLikeClick}
+              className={`w-[30px] h-[29.21px] left-0 top-0 absolute ${
+                liked ? "bg-rose-700" : "bg-gray-100"
+              } bg-opacity-50 rounded-full backdrop-blur-[2px]`}
+            />
             <Image
               src={Like}
               alt='like'

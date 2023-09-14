@@ -63,6 +63,7 @@ export default function MovieDetails({ params }: Props) {
     }
   }, [movieVideo, details]);
 
+
   return (
     <div className='flex gap-5 max-md:flex-wrap'>
       <Sidenav id={id} />
@@ -91,7 +92,7 @@ export default function MovieDetails({ params }: Props) {
                     data-testid='movie-release-date'
                     className='text-neutral-700 text-[23px] font-medium'
                   >
-                    {details?.data?.release_date?.substring(0, 4)}
+                    {new Date(details?.data?.release_date).toUTCString()}
                   </span>
                   <span className='text-neutral-700 text-[23px] font-normal'>
                     •
@@ -114,7 +115,7 @@ export default function MovieDetails({ params }: Props) {
                   {details?.data?.genres?.map((genre: any) => (
                     <div
                       key={genre.id}
-                      className='rounded-[15px] flex items-center justify-center h-[30px] w-[84px] border border-pink-100 top-[6px] text-red-700 text-[15px] font-medium '
+                      className='rounded-[15px] flex items-center justify-center h-[30px] w-auto border border-pink-100 top-[6px] text-red-700 text-[15px] font-medium '
                     >
                       {genre.name}
                     </div>
