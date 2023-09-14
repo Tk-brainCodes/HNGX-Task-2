@@ -29,11 +29,6 @@ function TrailerCard({ movieVideo, isArtplayerVisible, image }: Props) {
     <div className='w-auto h-auto'>
       <div
         ref={artRef}
-        style={{
-          backgroundImage: `url(${image})`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-        }}
         className='w-[78vw] h-[449px] mt-[3em] rounded-[20px] mb-[2em]'
       ></div>
     </div>
