@@ -24,13 +24,13 @@ To run this project locally, follow these steps:
 
    ```bash
     https://github.com/Tk-brainCodes/HNGX-Task-2.git
-```
+   ```
 
 2. Clone the repository:
 
    ```bash
     cd moviebox
-```
+   ```
 
 3. Install the project dependencies:
 
