@@ -47,7 +47,7 @@ const Card = ({
               height={500}
               placeholder='blur'
               loading='lazy'
-              data-testid="movie-poster"
+              data-testid='movie-poster'
             />
           </div>
         </Link>
@@ -79,9 +79,9 @@ const Card = ({
       <div className='text-gray-400 text-xs flex gap-1 font-bold'>
         <span>{movie?.origin_country ? `${movie?.origin_country},` : ""}</span>
         <span data-testid='movie-release-date'>
-          {movie?.release_date?.substring(0, 4)
-            ? movie?.release_date?.substring(0, 4)
-            : `${movie?.first_air_date?.substring(0, 4)} - Current`}
+          {movie?.release_date
+            ? movie?.release_date
+            : `${movie?.first_air_date} - Current`}
         </span>
       </div>
       <div
@@ -112,8 +112,7 @@ const Card = ({
   );
 };
 
-function MovieCard({ movie, loading, movieRef, isError,
- }: Props) {
+function MovieCard({ movie, loading, movieRef, isError }: Props) {
   const imagePath = "https://image.tmdb.org/t/p/original";
   // @ts-ignore
   const { results, query } = useContext(SearchContext);
@@ -128,7 +127,7 @@ function MovieCard({ movie, loading, movieRef, isError,
 
   return (
     <div
-    data-testid="movie-card"
+      data-testid='movie-card'
       ref={movieRef}
       className='flex flex-col  items-center justify-center mt-[4em]'
     >
