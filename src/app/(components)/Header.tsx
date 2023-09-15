@@ -13,10 +13,13 @@ function Header({ movieRef }: Props) {
   const { query, onChange } = useContext(SearchContext);
   const [scrolling, setScrolling] = useState(false);
 
+
+  //scroll to destination
   const handleScroll = () => {
     setScrolling(window.scrollY > 0);
   };
 
+  //add scroll event listener
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -24,6 +27,7 @@ function Header({ movieRef }: Props) {
     };
   }, []);
 
+  //scroll to movies onClick
   const scrollToMovies = () => {
     scroll.scrollTo(movieRef.current.offsetTop, {
       duration: 800,

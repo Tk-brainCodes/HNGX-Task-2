@@ -14,10 +14,13 @@ type Props = {
 
 export default function MovieDetails({ params }: Props) {
   const { id }: any = params;
+  //movie id
   let movieId = id === "%5Bmovies%5D" ? 447277 : id;
 
+  //tmdb image path
   const imagePath = "https://image.tmdb.org/t/p/original";
 
+  //get movie details using useQuery
   const details = useQuery({
     queryKey: ["details"],
     queryFn: () =>
@@ -31,6 +34,7 @@ export default function MovieDetails({ params }: Props) {
 
   const ifError = details.isError;
 
+  //catch data in local storage
   useEffect(() => {
     function canCacheData(fetchStatus: any) {
       return !fetchStatus.isFetching && fetchStatus.isSuccess;

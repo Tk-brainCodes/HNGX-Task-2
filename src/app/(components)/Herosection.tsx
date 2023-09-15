@@ -35,6 +35,7 @@ const Herosection = ({
   const swiperRef = useRef<typeof Swiper | null>(null);
   const [currentSlide, setCurrentSlide] = useState<number>(0);
 
+  //get the current index of the slide using useRef
   const handleSlideChange = (index: number) => {
     setCurrentSlide(index);
     if (swiperRef.current) {

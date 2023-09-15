@@ -28,6 +28,7 @@ const Card = ({
 }) => {
   const [liked, setLiked] = useState(false);
 
+  //toggle between favorite and not favorite
   const handleLikeClick = () => {
     setLiked(!liked);
   };
