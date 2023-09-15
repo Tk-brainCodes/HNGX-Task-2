@@ -152,7 +152,7 @@ function MovieCard({ movie, loading, movieRef, isError,
       ) : loading ? (
         <LoadingSpiner text='Movies' />
       ) : (
-        <div className='w-[100vw]  h-auto grid grid-cols-fluid gap-12 mb-[1em] '>
+        <div className='w-[100vw] md:px-8  md:py-4  h-auto grid grid-cols-fluid gap-12 mb-[1em] '>
           {results.length > 0
             ? results.map((movie: any) => (
                 <>
