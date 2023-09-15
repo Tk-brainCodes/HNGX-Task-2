@@ -72,7 +72,7 @@ export default function MovieDetails({ params }: Props) {
                       data-testid='movie-release-date'
                       className='text-neutral-700 text-[23px] font-medium'
                     >
-                      {new Date(details?.data?.release_date).toUTCString()}
+                      {new Date(details?.data?.release_date).getTime()}
                     </span>
                     <span className='text-neutral-700 text-[23px] font-normal'>
                       •
@@ -84,10 +84,11 @@ export default function MovieDetails({ params }: Props) {
                       •
                     </span>
                     <span
-                      data-testid='movie-runtime'
+                      data-testid='movie-runtime flex flex-nowrap'
                       className='text-neutral-700 text-[23px] font-medium'
                     >
-                      {details?.data?.runtime} m
+                      {details?.data?.runtime}
+                      <small>m</small>
                     </span>
 
                     <div className='flex gap-3 items-center justify-center flex-wrap'>
@@ -127,23 +128,26 @@ export default function MovieDetails({ params }: Props) {
                 <div className='w-auto h-auto mt-[1em] grid gap-4'>
                   <div className='flex gap-3'>
                     <span className='text-zinc-800 text-xl font-normal'>
-                      Director :  <span className='text-rose-700 text-xl font-normal'>
-                      Joseph Kosinski
-                    </span>
-                    </span>
-                  </div>
-                  <div className='flex gap-3'>
-                    <span className='text-zinc-800 text-xl font-normal'>
-                      Writers :  <span className='text-rose-700 text-xl font-normal'>
-                      Jim Cash, Jack Epps Jr, Peter Craig
-                    </span>
+                      Director :{" "}
+                      <span className='text-rose-700 text-xl font-normal'>
+                        Joseph Kosinski
+                      </span>
                     </span>
                   </div>
                   <div className='flex gap-3'>
                     <span className='text-zinc-800 text-xl font-normal'>
-                      Stars :  <span className='text-rose-700 text-xl font-normal'>
-                      Tom Cruise, Jennifer Connelly, Miles Teller
+                      Writers :{" "}
+                      <span className='text-rose-700 text-xl font-normal'>
+                        Jim Cash, Jack Epps Jr, Peter Craig
+                      </span>
                     </span>
+                  </div>
+                  <div className='flex gap-3'>
+                    <span className='text-zinc-800 text-xl font-normal'>
+                      Stars :{" "}
+                      <span className='text-rose-700 text-xl font-normal'>
+                        Tom Cruise, Jennifer Connelly, Miles Teller
+                      </span>
                     </span>
                   </div>
 

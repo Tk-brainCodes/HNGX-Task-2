@@ -128,9 +128,9 @@ function MovieCard({ movie, loading, movieRef, isError,
   return (
     <div
       ref={movieRef}
-      className='flex flex-col px-[2em] items-center justify-center mt-[4em]'
+      className='flex flex-col  items-center justify-center mt-[4em]'
     >
-      <div className='w-full  md:px-8  md:py-4 h-auto flex flex-start flex-col md:flex-row items-start md:justify-between  gap-4'>
+      <div className='w-full px-[3em] py-[2em] h-auto flex flex-start flex-col md:flex-row items-start md:justify-between  gap-4'>
         <div
           className='text-black  text-4xl font-bold text-center md:text-left'
           style={{ whiteSpace: "break-spaces" }}
@@ -152,7 +152,7 @@ function MovieCard({ movie, loading, movieRef, isError,
       ) : loading ? (
         <LoadingSpiner text='Movies' />
       ) : (
-        <div className='w-[100vw] md:px-8  md:py-4  h-auto grid grid-cols-fluid gap-12 mb-[1em] '>
+        <div className='w-[100vw] px-[3em] py-[2em] h-auto grid grid-cols-fluid gap-12 mb-[1em] '>
           {results.length > 0
             ? results.map((movie: any) => (
                 <>
