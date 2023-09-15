@@ -102,8 +102,8 @@ function Header({ movieRef }: Props) {
         </div>
       </div>
 
-      <div className='w-[425px] xs:hidden sm:hidden max-sm:mb-[1em] '>
-        <div className='lg:hidden max-md:block max-sm:block h-9 px-2.5 py-1.5 rounded-md border border-gray-300 justify-between items-center gap-2.5 inline-flex'>
+      <div className='w-full max-w-screen-sm mb-2 xs:mb-4 sm:mb-4'>
+        <div className='lg:hidden max-md:block max-sm:block h-auto px-2.5 py-1.5 rounded-md border border-gray-300 justify-between items-center gap-2.5 flex'>
           <input
             type='text'
             value={query}
