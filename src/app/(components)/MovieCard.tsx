@@ -36,10 +36,10 @@ const Card = ({
     <>
       <div className='w-[250px] max-md:w-[300px] max-sm:w-[300px] h-[370px] relative'>
         <Link href={`movies/${id}`}>
-          <div className='w-[250px] h-[370px] left-0 top-0 absolute'>
-            <div className='w-[250px] h-[370px] left-0 top-0 absolute bg-stone-300' />
+          <div className='w-full md:w-[250px] h-auto left-0 top-0 absolute'>
+            <div className='w-full md:w-[250px] h-[370px] left-0 top-0 absolute bg-stone-300' />
             <Image
-              className='w-[250px] h-[370px] bg-gray-600 transition ease-in-out hover:brightness-50 left-0 top-0 absolute'
+              className='w-full md:w-[250px] h-[370px] bg-gray-600 transition ease-in-out hover:brightness-50 left-0 top-0 absolute'
               src={imagePath + movie?.poster_path}
               alt={movie?.title || "title"}
               blurDataURL={imagePath + movie?.poster_path}
@@ -56,10 +56,15 @@ const Card = ({
               {movie?.media_type ? movie?.media_type?.toUpperCase() : "MOVIE"}
             </div>
           </div>
-          <div onClick={handleLikeClick} className='w-[30px] z-10 h-[29.21px] relative'>
+          <div
+            onClick={handleLikeClick}
+            className='w-[30px] z-10 h-[29.21px] relative'
+          >
             <div
               className={`w-[30px] h-[29.21px] left-0 top-0 absolute ${
-                liked ? "bg-rose-700" : "bg-gray-100 backdrop-blur-[2px] bg-opacity-50"
+                liked
+                  ? "bg-rose-700"
+                  : "bg-gray-100 backdrop-blur-[2px] bg-opacity-50"
               }  rounded-full `}
             />
             <Image
@@ -123,31 +128,31 @@ function MovieCard({ movie, loading, movieRef, isError,
   return (
     <div
       ref={movieRef}
-      className='flex flex-col items-center justify-center mt-[4em]'
+      className='flex flex-col px-[2em] items-center justify-center mt-[4em]'
     >
-      <div className='w-[100vw] px-[4em] py-[2em] h-[47px] justify-between items-center gap-[83px] inline-flex flex-nowrap'>
+      <div className='w-full  md:px-8  md:py-4 h-auto flex flex-start flex-col md:flex-row items-start md:justify-between  gap-4'>
         <div
-          className='text-black text-4xl font-bold'
+          className='text-black  text-4xl font-bold text-center md:text-left'
           style={{ whiteSpace: "break-spaces" }}
         >
-          {query ? `Results for " ${query} "` : "Featured Movie"}
+          {query ? `Results for "${query}"` : "Featured Movie"}
         </div>
-        <div className='justify-start items-center w-auto cursor-pointer gap-2 flex flex-nowrap'>
+        <div className='flex justify-center md:justify-start items-center gap-2'>
           <div className='text-rose-700 hover:text-rose-600 text-lg font-normal leading-normal'>
             See more
           </div>
           <Image src={Next} alt='next' className='w-5 h-5 relative' />
         </div>
       </div>
-      {isError ? ( 
+
+      {isError ? (
         <div className='font-2xl items-center justify-center text-red-700'>
-          An error occurred: {isError.message} 
+          An error occurred: {isError.message}
         </div>
-      ) : 
-      loading ? (
+      ) : loading ? (
         <LoadingSpiner text='Movies' />
       ) : (
-        <div className='w-[100vw] px-[4em] py-[2em] h-auto grid grid-cols-fluid gap-12 mb-[1em] '>
+        <div className='w-[100vw] px-[4.5em] py-[2em]  h-auto grid grid-cols-fluid gap-12 mb-[1em] '>
           {results.length > 0
             ? results.map((movie: any) => (
                 <>

@@ -152,7 +152,7 @@ const Herosection = ({
             </Swiper>
 
             {/*Carousel buttons*/}
-            <div className='w-autoh-auto block  z-10 mr-[4em]'>
+            <div className='w-autoh-auto block mt-[3em]  z-10 mr-[2em]'>
               {movie?.results
                 .map((_: any, index: number) => (
                   <>

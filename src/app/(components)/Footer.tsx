@@ -6,7 +6,7 @@ type Props = {};
 const Footer = (props: Props) => {
   return (
     <div className='flex items-center justify-center mt-[4em] content-center'>
-      <div className='w-[492px] h-auto mb-[2em] flex-col justify-start items-center gap-9 inline-flex'>
+      <div className='w-[492px] px-[2em] py-[2em] h-auto mb-[2em] flex-col justify-center items-center gap-9 inline-flex'>
         <div className='justify-start items-center gap-12 inline-flex'>
           <Image
             src={Facebook}

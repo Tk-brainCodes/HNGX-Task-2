@@ -56,8 +56,8 @@ export default function MovieDetails({ params }: Props) {
             <TrailerCard image={imagePath + details?.data?.poster_path} />
 
             <section className='grid w-full h-auto grid-cols-fluid gap-2 overflow-y-hidden'>
-              <div className='w-full px-6 px-2 h-auto'>
-                <div className='block flex flex-wrap flex-col md:flex-row '>
+              <div className='w-full px-6  h-auto'>
+                <div className=' flex flex-wrap flex-col md:flex-row '>
                   <div className='flex justify-start gap-3 flex-wrap'>
                     <span
                       data-testid='movie-title'

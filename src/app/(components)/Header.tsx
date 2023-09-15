@@ -34,35 +34,76 @@ function Header({ movieRef }: Props) {
 
   return (
     <div
-      className={`w-[100vw] fixed  ${
+      className={`block  max-md:flex-col max-md:flex max-md:items-center max-md:justify-center fixed z-40 ${
         scrolling
           ? "firefox:bg-opacity-90 transiton ease-out bg-opacity-30 backdrop-filter backdrop-blur-lg bg-[#121212]"
           : ""
-      } py-[1em] px-[4em] flex items-center justify-between h-auto z-40`}
+      } `}
     >
-      <LinkTo
-        to='hero'
-        offset={-110}
-        spy={true}
-        smooth={true}
-        duration={500}
-        activeClass='active'
+      <div
+        className={`w-[100vw]  py-[1em] px-[4em] flex items-center justify-between h-auto`}
       >
-        <div className='w-[186px] cursor-pointer h-[50px] justify-start items-center gap-6 inline-flex'>
-          <Image
-            src={Logo}
-            alt='logo'
-            width={50}
-            height={50}
-            className='w-[50px] h-[50px]'
-          />
-          <div className='text-white max-md:hidden max-sm: hidden text-2xl font-bold leading-normal'>
-            MovieBox
+        <LinkTo
+          to='hero'
+          offset={-110}
+          spy={true}
+          smooth={true}
+          duration={500}
+          activeClass='active'
+        >
+          <div className='w-[186px] cursor-pointer h-[50px] justify-start items-center gap-6 inline-flex'>
+            <Image
+              src={Logo}
+              alt='logo'
+              width={50}
+              height={50}
+              className='w-[50px] h-[50px]'
+            />
+            <div className='text-white text-2xl font-bold leading-normal'>
+              MovieBox
+            </div>
+          </div>
+        </LinkTo>
+        <div className='w-[525px]'>
+          <div className='w-full max-md:hidden max-sm:hidden h-9 px-2.5 py-1.5 rounded-md border border-gray-300 justify-between items-center gap-2.5 inline-flex'>
+            <input
+              type='text'
+              value={query}
+              onChange={onChange}
+              placeholder='What do you want to watch?'
+              className='text-white text-base font-normal leading-normal bg-transparent border-none outline-none w-full'
+              onClick={scrollToMovies}
+            />
+            <button
+              onClick={onChange}
+              className='text-white bg-transparent border-none outline-none cursor-pointer'
+            >
+              <Image
+                src={Search}
+                alt='search-icon'
+                className='w-4 h-4 relative'
+              />
+            </button>
           </div>
         </div>
-      </LinkTo>
-      <div className='w-[525px]'>
-        <div className='w-full h-9 px-2.5 py-1.5 rounded-md border border-gray-300 justify-between items-center gap-2.5 inline-flex'>
+        <div className=' flex h-9 justify-between items-center gap-[27px]'>
+          <div className='text-white block max-sm:hidden max-md:hidden text-base font-bold leading-normal'>
+            Sign in
+          </div>
+          <div className='w-9 h-9 cursor-pointer hover:bg-rose-600 flex items-center justify-center bg-rose-700 rounded-full'>
+            <Image
+              src={Hamburger}
+              alt='hamburger icon'
+              width={50}
+              height={50}
+              className='w-6 h-6'
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className='w-[425px] xs:hidden sm:hidden max-sm:mb-[1em] '>
+        <div className='lg:hidden max-md:block max-sm:block h-9 px-2.5 py-1.5 rounded-md border border-gray-300 justify-between items-center gap-2.5 inline-flex'>
           <input
             type='text'
             value={query}
@@ -73,7 +114,7 @@ function Header({ movieRef }: Props) {
           />
           <button
             onClick={onChange}
-            className='text-white bg-transparent border-none outline-none cursor-pointer'
+            className='text-white max-sm:hidden bg-transparent border-none outline-none cursor-pointer'
           >
             <Image
               src={Search}
@@ -81,20 +122,6 @@ function Header({ movieRef }: Props) {
               className='w-4 h-4 relative'
             />
           </button>
-        </div>
-      </div>
-      <div className=' flex h-9 justify-between items-center gap-[27px]'>
-        <div className='text-white block max-sm:hidden max-md:hidden text-base font-bold leading-normal'>
-          Sign in
-        </div>
-        <div className='w-9 h-9 cursor-pointer hover:bg-rose-600 flex items-center justify-center bg-rose-700 rounded-full'>
-          <Image
-            src={Hamburger}
-            alt='hamburger icon'
-            width={50}
-            height={50}
-            className='w-6 h-6'
-          />
         </div>
       </div>
     </div>

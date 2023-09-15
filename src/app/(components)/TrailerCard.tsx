@@ -9,7 +9,7 @@ type Props = {
 
 function TrailerCard({ image }: Props) {
   return (
-<div className='w-full px-6 px-2 h-auto'>
+<div className='w-full px-6  h-auto'>
   <div
     style={{
       backgroundImage: `url(${image})`,
