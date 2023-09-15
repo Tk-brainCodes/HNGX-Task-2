@@ -1,7 +1,6 @@
 import type { Config } from "tailwindcss";
 const { nextui } = require("@nextui-org/react");
 
-
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -18,6 +17,11 @@ const config: Config = {
         fluid: "repeat(auto-fit,minmax(15rem,1fr))",
       },
     },
+  },
+  screens: {
+    xs: "480px",
+    sm: "768px",
+    md: "1060px",
   },
   darkMode: "class",
   plugins: [nextui()],

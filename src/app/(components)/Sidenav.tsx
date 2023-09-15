@@ -10,7 +10,6 @@ import {
 } from "../../../assests/icons";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import Link from 'next/link'
 
 type Props = {
   id: number;
@@ -21,15 +20,13 @@ const Sidenav = ({ id }: Props) => {
 
   return (
     <aside>
-      <div className='w-[226px] h-[982px] rounded-tr-[45px] rounded-br-[45px] border border-black border-opacity-30'>
-       <Link href="/">
+      <div className='w-[226px] max-md:hidden max-sm:hidden h-[982px] rounded-tr-[45px] rounded-br-[45px] border border-black border-opacity-30'>
         <div className='w-auto cursor-pointer h-[50px]  left-[20px] top-[52px] absolute px-2 py-2 z-40  justify-start items-center gap-6 inline-flex'>
           <Image className='w-[50px] h-[50px]' src={Logo} alt='logo' />
           <div className='text-zinc-800 text-2xl font-bold leading-normal'>
             MovieBox
           </div>
         </div>
-       </Link>
 
         <div className='grid grid-cols-1 gap-5 mt-[10em]'>
           <div

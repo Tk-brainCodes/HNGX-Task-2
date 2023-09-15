@@ -1,37 +1,37 @@
 import { useRef, useEffect } from "react";
 import { initializeArtplayer } from "../(utils)/artplayer-util";
-import { Play } from "../../../assests/icons";
+import { Player } from "../../../assests/icons";
 import Image from "next/image";
 
 type Props = {
-  movieVideo: any;
-  isArtplayerVisible: boolean;
   image: string;
 };
 
-function TrailerCard({ movieVideo, isArtplayerVisible, image }: Props) {
-  const artRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (artRef.current && movieVideo?.data?.results?.length > 0) {
-      const videoKey = movieVideo?.data?.results[0]?.key;
-      initializeArtplayer(artRef.current, videoKey, image);
-    }
-  }, [image, movieVideo?.data?.results]);
-
-  useEffect(() => {
-    if (artRef.current) {
-      artRef.current.style.display = isArtplayerVisible ? "block" : "none";
-    }
-  }, [isArtplayerVisible]);
-
+function TrailerCard({ image }: Props) {
   return (
-    <div className='w-auto h-auto'>
-      <div
-        ref={artRef}
-        className='w-[78vw] h-[449px] mt-[3em] rounded-[20px] mb-[2em]'
-      ></div>
+<div className='w-full px-6 px-2 h-auto'>
+  <div
+    style={{
+      backgroundImage: `url(${image})`,
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
+    }}
+    className='w-full max-w-screen-lg md:w-[78vw] lg:w-[78vw] xl:w-[78vw] h-[449px] flex-col flex items-center justify-center mt-[3em] rounded-[20px] mb-[2em]'
+  >
+    <div className='w-[110px] h-[110px] cursor-pointer transition ease-in-out hover:scale-75  flex flex-col items-center justify-center bg-white bg-opacity-30 rounded-full shadow border-2 border-gray-200 border-opacity-20 backdrop-blur-sm'>
+      <Image
+        className='w-[54px] h-[54px] shadow'
+        src={Player}
+        alt='watch trailer'
+      />
     </div>
+    <div className='text-gray-200 mt-[30px] text-[25px] font-medium'>
+      Watch Trailer
+    </div>
+  </div>
+</div>
+
+
   );
 }
 

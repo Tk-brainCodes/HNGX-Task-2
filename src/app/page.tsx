@@ -59,12 +59,14 @@ export default function Home() {
         movie={trendingMovies.data}
         loading={trendingMovies.isLoading}
         movieRef={movieRef}
+        isError={trendingMovies.isError}
       />
       <MovieCard
         movie={popularMovies.data}
         loading={popularMovies.isLoading}
         movieRef={movieRef}
         data-testid="movie-card"
+        isError={popularMovies.isError}
       />
       <Footer />
     </main>

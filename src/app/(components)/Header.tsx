@@ -84,7 +84,7 @@ function Header({ movieRef }: Props) {
         </div>
       </div>
       <div className=' flex h-9 justify-between items-center gap-[27px]'>
-        <div className='text-white max-sm:hidden max-md:hidden text-base font-bold leading-normal'>
+        <div className='text-white block max-sm:hidden max-md:hidden text-base font-bold leading-normal'>
           Sign in
         </div>
         <div className='w-9 h-9 cursor-pointer hover:bg-rose-600 flex items-center justify-center bg-rose-700 rounded-full'>

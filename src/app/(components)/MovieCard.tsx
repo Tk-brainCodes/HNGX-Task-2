@@ -12,6 +12,7 @@ type Props = {
   movie: any;
   loading: boolean;
   movieRef: any;
+  isError: any;
 };
 
 const Card = ({
@@ -55,12 +56,11 @@ const Card = ({
               {movie?.media_type ? movie?.media_type?.toUpperCase() : "MOVIE"}
             </div>
           </div>
-          <div className='w-[30px] z-10 h-[29.21px] relative'>
+          <div onClick={handleLikeClick} className='w-[30px] z-10 h-[29.21px] relative'>
             <div
-              onClick={handleLikeClick}
               className={`w-[30px] h-[29.21px] left-0 top-0 absolute ${
-                liked ? "bg-rose-700" : "bg-gray-100"
-              } bg-opacity-50 rounded-full backdrop-blur-[2px]`}
+                liked ? "bg-rose-700" : "bg-gray-100 backdrop-blur-[2px] bg-opacity-50"
+              }  rounded-full `}
             />
             <Image
               src={Like}
@@ -106,7 +106,8 @@ const Card = ({
   );
 };
 
-function MovieCard({ movie, loading, movieRef }: Props) {
+function MovieCard({ movie, loading, movieRef, isError,
+ }: Props) {
   const imagePath = "https://image.tmdb.org/t/p/original";
   // @ts-ignore
   const { results, query } = useContext(SearchContext);
@@ -138,7 +139,12 @@ function MovieCard({ movie, loading, movieRef }: Props) {
           <Image src={Next} alt='next' className='w-5 h-5 relative' />
         </div>
       </div>
-      {loading ? (
+      {isError ? ( 
+        <div className='font-2xl items-center justify-center text-red-700'>
+          An error occurred: {isError.message} 
+        </div>
+      ) : 
+      loading ? (
         <LoadingSpiner text='Movies' />
       ) : (
         <div className='w-[100vw] px-[4em] py-[2em] h-auto grid grid-cols-fluid gap-12 mb-[1em] '>

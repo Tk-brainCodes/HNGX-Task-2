@@ -23,4 +23,4 @@ export { default as Tag } from "./tag.svg";
 export { default as Option } from "./option.svg";
 export { default as OptionW } from "./optionW.svg";
 export { default as ImageMovie } from "./image.svg";
-export { default as Play } from "./play.svg";
+export { default as Player } from "./player.svg";
