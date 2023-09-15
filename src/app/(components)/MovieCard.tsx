@@ -47,6 +47,7 @@ const Card = ({
               height={500}
               placeholder='blur'
               loading='lazy'
+              data-testid="movie-poster"
             />
           </div>
         </Link>
@@ -127,6 +128,7 @@ function MovieCard({ movie, loading, movieRef, isError,
 
   return (
     <div
+    data-testid="movie-card"
       ref={movieRef}
       className='flex flex-col  items-center justify-center mt-[4em]'
     >

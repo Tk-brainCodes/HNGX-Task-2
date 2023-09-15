@@ -16,6 +16,7 @@ function TrailerCard({ image }: Props) {
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
     }}
+    data-testid="movie-poster"
     className='w-full max-w-screen-lg md:w-[78vw] lg:w-[78vw] xl:w-[78vw] h-[449px] flex-col flex items-center justify-center mt-[3em] rounded-[20px] mb-[2em]'
   >
     <div className='w-[110px] h-[110px] cursor-pointer transition ease-in-out hover:scale-75  flex flex-col items-center justify-center bg-white bg-opacity-30 rounded-full shadow border-2 border-gray-200 border-opacity-20 backdrop-blur-sm'>

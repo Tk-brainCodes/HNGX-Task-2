@@ -65,7 +65,6 @@ export default function Home() {
         movie={popularMovies.data}
         loading={popularMovies.isLoading}
         movieRef={movieRef}
-        data-testid="movie-card"
         isError={popularMovies.isError}
       />
       <Footer />
