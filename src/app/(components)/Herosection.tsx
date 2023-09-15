@@ -61,6 +61,7 @@ const Herosection = ({
             backgroundRepeat: "no-repeat",
             height: "600px",
           }}
+          data-testid="movie-poster"
         >
           <div
             className='absolute  top-0 left-0 w-[100vw] h-full bg-black opacity-50'
