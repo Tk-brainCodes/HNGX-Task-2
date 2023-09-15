@@ -5,6 +5,7 @@ Welcome to the Movie Box, a web application for browsing and exploring movies.
 ## Features
 
 - View a list of top-rated movies.
+- Search movies
 - View detailed information about individual movies.
 - Add and remove movies to/from your favorites.
 
@@ -25,9 +26,9 @@ To run this project locally, follow these steps:
     https://github.com/Tk-brainCodes/HNGX-Task-2.git
 ```
 
-2. Change into the project directory:
+2. Clone the repository:
 
-   ```bash 
+   ```bash
     cd moviebox
 ```
 
