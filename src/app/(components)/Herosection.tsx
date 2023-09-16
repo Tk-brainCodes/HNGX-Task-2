@@ -132,7 +132,7 @@ const Herosection = ({
                           {movie?.overview}
                         </div>
 
-                        <Link href={`movie/${movie?.id}`}>
+                        <Link href={`movies/${movie?.id}`}>
                           <div className='px-4 py-1.5 bg-rose-700 cursor-pointer hover:bg-rose-600 rounded-md justify-start items-center gap-2 inline-flex'>
                             <Image
                               src={Watch}
