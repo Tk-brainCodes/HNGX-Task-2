@@ -24,7 +24,7 @@ const Herosection = ({
   movie,
   loading,
   movieRef,
-  isError
+  isError,
 }: {
   movie: any;
   loading: boolean;
@@ -62,7 +62,7 @@ const Herosection = ({
             backgroundRepeat: "no-repeat",
             height: "600px",
           }}
-          data-testid="movie-poster"
+          data-testid='movie-poster'
         >
           <div
             className='absolute  top-0 left-0 w-[100vw] h-full bg-black opacity-50'
@@ -132,7 +132,7 @@ const Herosection = ({
                           {movie?.overview}
                         </div>
 
-                        <Link href={`/`}>
+                        <Link href={`movie/${movie?.id}`}>
                           <div className='px-4 py-1.5 bg-rose-700 cursor-pointer hover:bg-rose-600 rounded-md justify-start items-center gap-2 inline-flex'>
                             <Image
                               src={Watch}
