@@ -21,45 +21,25 @@ export default function Home() {
     refetchInterval: 1000,
   });
 
-  const trendingMovies = useQuery({
-    queryKey: ["trendingMovies"],
-    queryFn: () =>
-      axios
-        .get(
-          `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
-        )
-        .then((res) => res.data),
-    refetchInterval: 1000,
-  });
-
   useEffect(() => {
     function canCacheData(fetchStatus: any) {
       return !fetchStatus.isFetching && fetchStatus.isSuccess;
     }
 
-    if (canCacheData(popularMovies) && canCacheData(trendingMovies)) {
-      typeof window !== "undefined"
-        ? localStorage.setItem(
-            "nowShowing",
-            JSON.stringify(trendingMovies.data)
-          )
-        : "";
+    if (canCacheData(popularMovies)) {
       typeof window !== "undefined"
         ? localStorage.setItem("popular", JSON.stringify(popularMovies.data))
         : "";
-      typeof window !== "undefined"
-        ? localStorage.setItem("trending", JSON.stringify(trendingMovies.data))
-        : "";
     }
-  }, [popularMovies, trendingMovies]);
+  }, [popularMovies]);
 
   return (
     <main className=''>
       <Herosection
-        movie={trendingMovies.data}
-        loading={trendingMovies.isLoading}
+        movie={popularMovies.data}
+        loading={popularMovies.isLoading}
         movieRef={movieRef}
-        isError={trendingMovies.isError}
+        isError={popularMovies.isError}
       />
       <MovieCard
         movie={popularMovies.data}
