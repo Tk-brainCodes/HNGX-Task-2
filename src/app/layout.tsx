@@ -4,12 +4,14 @@ import { DM_Sans } from "next/font/google";
 import QueryProvider from "./(providers)/usequery-provider";
 import { NextProvider } from "./(providers)/nextui-provider";
 import { SearchProvider } from "./(providers)/search-provider";
+import Footer from "./(components)/Footer";
 
 const dmSans = DM_Sans({
   weight: ["400", "700"],
   subsets: ["latin"],
   variable: "--font-dmsans",
 });
+
 
 export const metadata: Metadata = {
   title: "MovieBox",
@@ -26,7 +28,10 @@ export default function RootLayout({
       <body className={dmSans.className}>
         <QueryProvider>
           <NextProvider>
-            <SearchProvider>{children}</SearchProvider>
+            <SearchProvider>
+              {children}
+              <Footer />
+            </SearchProvider>
           </NextProvider>
         </QueryProvider>
       </body>

@@ -5,13 +5,12 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import MovieCard from "./(components)/MovieCard";
 import Herosection from "./(components)/Herosection";
-import Footer from "./(components)/Footer";
 
 export default function Home() {
   const movieRef = useRef(null);
 
-  const popularMovies = useQuery({
-    queryKey: ["popularMovies"],
+  const movies = useQuery({
+    queryKey: ["movies"],
     queryFn: () =>
       axios
         .get(
@@ -26,28 +25,27 @@ export default function Home() {
       return !fetchStatus.isFetching && fetchStatus.isSuccess;
     }
 
-    if (canCacheData(popularMovies)) {
+    if (canCacheData(movies)) {
       typeof window !== "undefined"
-        ? localStorage.setItem("popular", JSON.stringify(popularMovies.data))
+        ? localStorage.setItem("popular", JSON.stringify(movies.data))
         : "";
     }
-  }, [popularMovies]);
+  }, [movies]);
 
   return (
     <main className=''>
       <Herosection
-        movie={popularMovies.data}
-        loading={popularMovies.isLoading}
+        movie={movies.data}
+        loading={movies.isLoading}
         movieRef={movieRef}
-        isError={popularMovies.isError}
+        isError={movies.isError}
       />
       <MovieCard
-        movie={popularMovies.data}
-        loading={popularMovies.isLoading}
+        movie={movies.data}
+        loading={movies.isLoading}
         movieRef={movieRef}
-        isError={popularMovies.isError}
+        isError={movies.isError}
       />
-      <Footer />
     </main>
   );
 }
