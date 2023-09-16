@@ -1,15 +1,30 @@
 {
-    "rewrites": [
-        {
-         "source": "/(.*)",
-         "destination": "/"
-        }        
-    ],
-    "routes": [
-        {
-            "src": "/[^.]+",
-            "dest": "/",
-            "status": 200
-        }
-    ]
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/[^.]+",
+      "dest": "/",
+      "status": 200
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/_next/[^.]+",
+      "dest": "/_next/$1"
+    },
+    {
+      "src": "/static/[^.]+",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/api/[^.]+",
+      "dest": "/api/$1"
+    }
+  ]
 }
