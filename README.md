@@ -23,10 +23,10 @@ To run this project locally, follow these steps:
 1. Clone the repository:
 
    ```bash
-    https://github.com/Tk-brainCodes/HNGX-Task-2.git
+   git clone https://github.com/Tk-brainCodes/HNGX-Task-2.git
    ```
 
-2. Clone the repository:
+2. Change directory:
 
    ```bash
     cd moviebox
